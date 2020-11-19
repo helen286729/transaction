@@ -1,0 +1,93 @@
+<html>
+	<script src="/lib/jquery-1.9.0.js" type="text/javascript"></script>
+	<style>
+		input[type=submit] {
+			width: 20em;
+			height: 2em;
+		}
+	</style>
+	<body>
+	<form id="transactionForm">
+		<table>
+			<tr>
+				<td>User Id: </td>
+				<td><input name="userId" id="userId"></input></td>
+			</tr>
+			<tr>
+				<td>Currency From: </td>
+				<td>
+					<select name="currencyFrom" id="currencyFrom">
+  						<option value="EUR">Europe dollar</option>
+  						<option value="KRW">Korea dollar</option>
+  						<option value="HKD">Hong Kong dollar</option>
+  						<option value="USD">America dollar</option>
+  						<option value="GBP">UK dollar</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Currency To: </td>
+				<td>
+					<select name="currencyTo" id="currencyTo">
+  						<option value="EUR">Europe dollar</option>
+  						<option value="KRW">Korea dollar</option>
+  						<option value="HKD">Hong Kong dollar</option>
+  						<option value="USD">America dollar</option>
+  						<option value="GBP">UK dollar</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Amount Sell: </td>
+				<td><input id="amountSell" name="amountSell"/></td>
+			</tr>
+			<tr>
+				<td>Amount Buy: </td>
+				<td><input id="amountBuy" name="amountBuy"/></td>
+			</tr>
+			<tr>
+				<td>Rate: </td>
+				<td><input id="rate" name="rate"/></td>
+			</tr>
+			<tr>
+				<td>Originating Country: </td>
+				<td>
+					<select id="orinatingCountry" name="orginatingCountry">
+  						<option value="FR">France</option>
+  						<option value="HK">Hong Kong</option>
+  						<option value="TW">Taiwan</option>
+  						<option value="US">United State</option>
+  						<option value="KR">Korea</option>
+					</select>
+				</td>
+			</tr>
+			<tr><td colspan="2" style="text-align:center;"><input type="button" id="submit" value="Submit" height="50px"/></td></tr>
+		</table>
+	</form>
+	</body>
+	<script>
+		$(function() {
+			$("#submit").click(function() {				
+				var data = $('#transactionForm').serializeArray().reduce(function(obj, item) {
+				    obj[item.name] = item.value;
+				    return obj;
+				}, {});
+				
+  				$.ajax({
+					type: 'POST',
+					url: "http://localhost:8081/trans/submit",
+					dataType: 'json',
+					contentType: 'application/json',
+					data: JSON.stringify(data),
+					success: function(data) {
+						alert("Submitted!");
+					},
+					error: function() {
+						alert("Error!");
+					}
+				});
+			});
+		});
+	
+	</script>
+</html>
