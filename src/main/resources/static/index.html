@@ -73,6 +73,26 @@
 				    return obj;
 				}, {});
 				
+				var re = /^[0-9]+(.[0-9]{0,2})?$/;
+				if (data.userId == "") {
+					alert("Please enter User Id.");
+					return;
+
+				}
+				if (!data.amountSell.match(re) ) {
+					alert("Amount Sell should enter intege or decimal.");
+					return;
+				}
+				if (!data.amountBuy.match(re) ) {
+					alert("Amount Buy should enter intege or decimal.");
+					return;
+				}
+				if (!data.rate.match(re) ) {
+					alert("Rate should enter intege or decimal.");
+					return;
+				}
+
+				
   				$.ajax({
 					type: 'POST',
 					url: "http://localhost:8081/trans/submit",
