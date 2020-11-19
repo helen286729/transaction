@@ -8,7 +8,7 @@ http://localhost:8081/index.html
 2. List transaction - GET method
 http://localhost:8081/trans/list 
 
-***User Id, Amount Sell, Amount Buy cannot fill in 
+***User Id, Amount Sell, Amount Buy should fill in integer or decimal.
 
 ### Testing
 
