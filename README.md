@@ -22,7 +22,7 @@ Amount Buy: 4439.3
 Rate: 3.2
 Originating Country:	 "HK"
 
-b) Go to http://localhost:8081/trans/list, check whether data above showed in the list.
+b) Go to http://localhost:8081/trans/list, check whether the data above showed in the list.
 
 
 ### Contact Developers
